@@ -1,11 +1,11 @@
 #!/bin/bash
 
 case $1 in
-    --date)
+    --date | -d)
         date
         ;;
 
-    --logs)
+    --logs | -l)
         if [ -n "$2" ] && [[ "$2" =~ ^[0-9]+$ ]]; then
             num_files="$2"
         else
@@ -19,11 +19,20 @@ case $1 in
         echo "Utworzono $num_files plików log."
         ;;
 
-    --help)
+    --init)
+        repo_url="https://github.com/Iza58479/Projekt.git"  # <- zmień na swoje repo
+        folder_name=$(basename "$repo_url" .git)
+        git clone "$repo_url"
+        export PATH="$PWD/$folder_name:":$PATH
+        echo "Dodano $folder_name do PATH"
+        ;;
+
+    --help | -h)
         echo "Dostępne opcje:"
-        echo "  --date      Wyświetla dzisiejszą datę"
-        echo "  --logs [N]  Tworzy N plików logx.txt (domyślnie 100)"
-        echo "  --help      Wyświetla ten tekst pomocy"
+        echo "  --date, -d      Wyświetla dzisiejszą datę"
+        echo "  --logs [N], -l [N]  Tworzy N plików logx.txt (domyślnie 100)"
+        echo "  --help, -h      Wyświetla ten tekst pomocy"
+	echo "  --init          klonuje całe repozytorium do katalogu, w którym został uruchomiony, oraz ustawia ścieżkę w zmiennej środowiskowej PATH"
         ;;
         
     *)
