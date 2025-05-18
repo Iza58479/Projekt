@@ -33,7 +33,7 @@ case $1 in
         echo "Utworzono $num_files plików error."
         ;;
 
-    --init)
+    --init | -i)
         repo_url="https://github.com/Iza58479/Projekt.git"
         folder_name=$(basename "$repo_url" .git)
         git clone "$repo_url"
@@ -43,11 +43,11 @@ case $1 in
 
     --help | -h)
         echo "Dostępne opcje:"
-        echo "  --date, -d      Wyświetla dzisiejszą datę"
+        echo "  --date, -d          Wyświetla dzisiejszą datę"
         echo "  --logs [N], -l [N]  Tworzy N plików logx.txt (domyślnie 100)"
-	echo "  --error [N] Tworzy N plików errorx.txt (domyślnie 100)"
-        echo "  --help, -h      Wyświetla ten tekst pomocy"
-	echo "  --init      Klonuje całe repozytorium do katalogu, w którym został uruchomiony, oraz ustawia ścieżkę w zmiennej środowiskowej PATH"
+	echo "  --error [N], -e [N] Tworzy N plików errorx.txt (domyślnie 100)"
+        echo "  --help, -h          Wyświetla ten tekst pomocy"
+	echo "  --init, -i          Klonuje całe repozytorium do katalogu, w którym został uruchomiony, oraz ustawia ścieżkę w zmiennej środowiskowej PATH"
         ;;
         
     *)
