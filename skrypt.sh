@@ -43,10 +43,10 @@ case $1 in
 
     --help | -h)
         echo "Dostępne opcje:"
-        echo "  --date      Wyświetla dzisiejszą datę"
-        echo "  --logs [N]  Tworzy N plików logx.txt (domyślnie 100)"
+        echo "  --date, -d      Wyświetla dzisiejszą datę"
+        echo "  --logs [N], -l [N]  Tworzy N plików logx.txt (domyślnie 100)"
 	echo "  --error [N] Tworzy N plików errorx.txt (domyślnie 100)"
-        echo "  --help      Wyświetla ten tekst pomocy"
+        echo "  --help, -h      Wyświetla ten tekst pomocy"
 	echo "  --init      Klonuje całe repozytorium do katalogu, w którym został uruchomiony, oraz ustawia ścieżkę w zmiennej środowiskowej PATH"
         ;;
         
