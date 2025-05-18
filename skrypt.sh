@@ -20,7 +20,7 @@ case $1 in
         ;;
 
     --init)
-        repo_url="https://github.com/Iza58479/Projekt.git"  # <- zmień na swoje repo
+        repo_url="https://github.com/Iza58479/Projekt.git"
         folder_name=$(basename "$repo_url" .git)
         git clone "$repo_url"
         export PATH="$PWD/$folder_name:":$PATH
