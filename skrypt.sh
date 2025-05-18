@@ -19,6 +19,20 @@ case $1 in
         echo "Utworzono $num_files plików log."
         ;;
 
+    --error | -e)
+        if [ -n "$2" ] && [[ "$2" =~ ^[0-9]+$ ]]; then
+            num_files="$2"
+        else
+            num_files=100
+        fi
+
+        for i in $(seq 1 "$num_files"); do
+            filename="error${i}.txt"
+            echo -e "Nazwa pliku: $filename\nSkrypt: $0\nData: $(date)" > "$filename"
+        done
+        echo "Utworzono $num_files plików error."
+        ;;
+
     --init)
         repo_url="https://github.com/Iza58479/Projekt.git"
         folder_name=$(basename "$repo_url" .git)
@@ -31,6 +45,7 @@ case $1 in
         echo "Dostępne opcje:"
         echo "  --date      Wyświetla dzisiejszą datę"
         echo "  --logs [N]  Tworzy N plików logx.txt (domyślnie 100)"
+	echo "  --error [N] Tworzy N plików errorx.txt (domyślnie 100)"
         echo "  --help      Wyświetla ten tekst pomocy"
 	echo "  --init      Klonuje całe repozytorium do katalogu, w którym został uruchomiony, oraz ustawia ścieżkę w zmiennej środowiskowej PATH"
         ;;
